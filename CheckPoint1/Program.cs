@@ -19,7 +19,7 @@ namespace CheckPoint1
             foreach (string item in file_candy)
             {
                 string[] str = item.Split(';'); 
-                list.Add(new Candy(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]), Stuffing.nostuffing)); // добавляем в коллекцию новый экземпляр класса Auto
+                list.Add(new Candy(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]), Stuffing.caramel)); 
             }
             foreach (string item in file_biscuit)
             {
