@@ -12,9 +12,7 @@ namespace CheckPoint1
         public double Weight { get; set; }
         public double Price { get; set; }
         public double Sugar { get; set; }
-        public Sweets()
-        { 
-        }
+        public Sweets() { }
         public Sweets(string name, double weight, double price, double sugar)
         {
             this.Name = name;
