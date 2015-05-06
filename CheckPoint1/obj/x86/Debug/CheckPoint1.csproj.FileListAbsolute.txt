@@ -1,0 +1,5 @@
+D:\Natasha\!!Trening ASP.NET\Projects\CheckPoint1\CheckPoint1\bin\Debug\CheckPoint1.exe
+D:\Natasha\!!Trening ASP.NET\Projects\CheckPoint1\CheckPoint1\bin\Debug\CheckPoint1.pdb
+D:\Natasha\!!Trening ASP.NET\Projects\CheckPoint1\CheckPoint1\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Natasha\!!Trening ASP.NET\Projects\CheckPoint1\CheckPoint1\obj\x86\Debug\CheckPoint1.exe
+D:\Natasha\!!Trening ASP.NET\Projects\CheckPoint1\CheckPoint1\obj\x86\Debug\CheckPoint1.pdb
