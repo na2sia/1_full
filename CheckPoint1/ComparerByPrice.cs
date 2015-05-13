@@ -7,7 +7,6 @@ namespace CheckPoint1
 {
     class ComparerByPrice : IComparer<ISweets>
     {
-        public int Value { get; set; }
         public int Compare(ISweets x,ISweets y)
         {
             if (x != null && y != null)

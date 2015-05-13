@@ -9,8 +9,8 @@ namespace CheckPoint1
     {
        public Stuffing Stuffing { get; set; }
 
-       public Candy()
-       { }
+       public Candy(){ }
+
        public Candy(string name, double weight, double price, double sugar, Stuffing stuffing)
        {
            Name = name;
