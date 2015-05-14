@@ -54,7 +54,7 @@ namespace CheckPoint1
             //Вызываем метод для сортировки по цене
             Console.WriteLine();
             Console.WriteLine("Сортируем по цене:");
-            MyGift.SortByPrice();
+            MyGift.Sort(new ComparerByPrice());
             //Выводим результат сортировки в консоль
             foreach (var i in MyGift)
             {

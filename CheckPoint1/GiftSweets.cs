@@ -55,20 +55,15 @@ namespace CheckPoint1
            return this.GetEnumerator();
        }
        #endregion
-       protected void Sort(IComparer<ISweets> comparer)
+       public void Sort(IComparer<ISweets> comparer)
        {
            var newList = gift.ToList();
            newList.Sort(comparer);
            gift = newList;
        }
-       public void SortByPrice()
-       {
-           this.Sort(new ComparerByPrice());
-       }
-
-
+      
        public double TotalWeight()
-       {
+       {           
            double Summ = 0;
            foreach (var i in gift)
            {
