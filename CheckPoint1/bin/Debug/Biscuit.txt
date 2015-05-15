@@ -1,4 +1,4 @@
-﻿К чаю;250;13000;20;longBiscuit
+﻿К чаю;7050;13000;20;longBiscuit
 Слодыч;500;15000;15;sugarBiscuit
 Мария;300;1000;5;sugarBiscuit
 Крокет;150;700;5;longBiscuit
