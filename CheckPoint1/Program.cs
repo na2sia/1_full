@@ -56,7 +56,7 @@ namespace CheckPoint1
             {
                 Console.WriteLine("{0}, {1}", i.Name, i.Price);
             }
-            
+
             //Вызываем метод вычисления общей массы подарка и выводим результат в консоль
             Console.WriteLine();
             Console.WriteLine("Общий вес подарка {0} грамм", MyGift.TotalWeight);

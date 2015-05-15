@@ -59,8 +59,7 @@ namespace CheckPoint1
        
        public void Sort(IComparer<ISweets> comparer)
        {
-           var newList = giftList.OrderBy(x => x, comparer); 
-           giftList = newList.ToList();
+           giftList = giftList.OrderBy(x => x, comparer).ToList();
        }
                     
        public double TotalWeight 
