@@ -56,11 +56,11 @@ namespace CheckPoint1
        }
        #endregion
 
+       
        public void Sort(IComparer<ISweets> comparer)
        {
-           var newList = giftList.ToList();
-           newList.Sort(comparer);
-           giftList = newList;
+           var newList = giftList.OrderBy(x => x, comparer); 
+           giftList = newList.ToList();
        }
                     
        public double TotalWeight 

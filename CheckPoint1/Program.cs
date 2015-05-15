@@ -10,28 +10,33 @@ namespace CheckPoint1
     {
         static void Main(string[] args)
         {
-            string[] file_candy = File.ReadAllLines("Candy.txt");
-            string[] file_biscuit = File.ReadAllLines("Biscuit.txt");
-            string[] file_chocolate = File.ReadAllLines("Chocolate.txt");
-
-            GiftSweets MyGift = new GiftSweets(); 
-            //Добавляем в коллекцию объекты (поля заполняем данными из соответствующего файла)
-            foreach (string item in file_candy)
+            GiftSweets MyGift = new GiftSweets();
+            try
             {
-                string[] str = item.Split(';'); 
-                MyGift.Add(new Candy(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]), (Stuffing)Enum.Parse(typeof(Stuffing),str[4]))); 
+                string[] file_candy = File.ReadAllLines("Candy.txt");
+                string[] file_biscuit = File.ReadAllLines("Biscuit.txt");
+                string[] file_chocolate = File.ReadAllLines("Chocolate.txt");
+                
+                //Добавляем в коллекцию объекты (поля заполняем данными из соответствующего файла)
+                foreach (string item in file_candy)
+                {
+                    string[] str = item.Split(';');
+                    MyGift.Add(new Candy(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]), (Stuffing)Enum.Parse(typeof(Stuffing), str[4])));
+                }
+                foreach (string item in file_biscuit)
+                {
+                    string[] str = item.Split(';');
+                    MyGift.Add(new Biscuit(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]), (TypeBiscuit)Enum.Parse(typeof(TypeBiscuit), str[4])));
+                }
+                foreach (string item in file_chocolate)
+                {
+                    string[] str = item.Split(';');
+                    MyGift.Add(new Chocolate(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]), double.Parse(str[4])));
+                }
             }
-            foreach (string item in file_biscuit)
-            {
-                string[] str = item.Split(';');
-                MyGift.Add(new Biscuit(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]),(TypeBiscuit)Enum.Parse(typeof(TypeBiscuit),str[4])));
-            }
-            foreach (string item in file_chocolate)
-            {
-                string[] str = item.Split(';');
-                MyGift.Add(new Chocolate(str[0], double.Parse(str[1]), double.Parse(str[2]), double.Parse(str[3]),double.Parse(str[4])));
-            }
+            catch { Console.WriteLine("Ошибка чтения из файла"); }
             
+
             //Вызываем метод выборки данных (содержание сахара)
             double starts = 5;
             double ends = 20;
