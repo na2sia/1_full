@@ -16,7 +16,7 @@ namespace CheckPoint2_1
                 Console.WriteLine("Incorrect path");
                 return null;
             }
-            var text = File.ReadAllText(pathToFile, Encoding.UTF8);
+            var text = File.ReadAllText(pathToFile, Encoding.Default);
             return StringFormat(text);
         }
 

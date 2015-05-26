@@ -18,53 +18,64 @@ namespace CheckPoint2_1.TextElements
         public IList<Sentence> Parse(string text)
         {
             var tempText = new List<Sentence>();
-            foreach (var element in SplitBySentences(SplitByWords(SplitBySymbols(text))))
+            foreach (var element in SplitSentences(SplitWords(SplitSymbols(text))))
             {
                 Value.Add(element);
             }
             return tempText;
         }
 
-        private IList<Sentence> SplitBySentences(IList<Word> text)
+        private IList<Sentence> SplitSentences(IList<Word> text)
         {
-            var tempSentenceList = new List<Sentence>();
+            var tempListSentence = new List<Sentence>();
             var tempSentence = new Sentence();
             foreach (var element in text)
             {
-                if (!element.DoesEndSentence)
+                if (!element.EndSentence)
                 {
                     tempSentence.Value.Add(element);
                 }
                 else
                 {
                     tempSentence.Value.Add(element);
-                    tempSentenceList.Add(tempSentence);
+                    tempListSentence.Add(tempSentence);
                     tempSentence = new Sentence();
                 }
             }
-            return tempSentenceList;
+            return tempListSentence;
         }
 
-        private  IList<Word> SplitByWords(IList<Symbol> text)
+        private  IList<Word> SplitWords(IList<Symbol> text)
         {
-            var tempWordList = new List<Word>();
+            var tempListWord = new List<Word>();
             var tempWord = new Word();
+            
             foreach (var element in text)
             {
                 if (!(Char.IsWhiteSpace(element.Value)))
                 {
-                    tempWord.Value.Add(element);
+                    if (!element.IsPunctuationMark)
+                    {
+                        tempWord.Value.Add(element);
+                    }
+                    
+                    if (element.IsPunctuationMark)
+                    {
+                        tempListWord.Add(tempWord);
+                        tempWord = new Word();
+                        tempWord.Value.Add(element);
+                    }
                 }
                 else
                 {
-                    tempWordList.Add(tempWord);
+                    tempListWord.Add(tempWord);
                     tempWord = new Word();
                 }
             }
-            return tempWordList;
+            return tempListWord;
         }
 
-        private IList<Symbol> SplitBySymbols(string text)
+        private IList<Symbol> SplitSymbols(string text)
         {
             return text.Select(element => new Symbol(element)).ToList();
         }
@@ -76,43 +87,53 @@ namespace CheckPoint2_1.TextElements
                                           select sentence;
             return query.ToList();
         }
-        public IEnumerable<Word> GetWords()
-        {
-            Symbol Interrogative = new Symbol('?');
-            foreach (var word in Value.SelectMany(sentence=>sentence.Value.Where(word=>word.Value.Contains(Interrogative))))
-            {
-                yield return word;
-            }
-        }
 
-        public IList<Sentence> DeleteWords(int lenghtOfWords)
+        public List<Word> GetWords(int lenghtWords)
         {
-            IList<Sentence> tempText = new List<Sentence>();
-            tempText = Value;
+            List<Word> tempWord = new List<Word>();
+            foreach (var sentence in Value.Select(sentence => sentence.Value))
+            {
+                foreach (var word in sentence.Select(word => word.Value))
+                {
+                    foreach (var symbol in word.Select(symbol => symbol.Value))
+                    {
+                        if (symbol == '?')
+                        {
+                            tempWord = (sentence.Select(sent => sent).Where(sent => sent.Value.Count() == lenghtWords)).ToList();
+                        }
+                    }
+
+                }
+            }
+            return tempWord;
+        }
+        
+        public List<Sentence> DeleteWords(int lenghtOfWords)
+        {
+            List<Sentence> tempText = new List<Sentence>();
+            tempText = Value.ToList();
             foreach (var word in tempText.SelectMany(sentence => sentence
-                .Value.Where(word => word.BeginsWithConsonant && word.Value.Count() == lenghtOfWords)))
+                .Value.Where(word => word.IsConsonant && word.Value.Count() == lenghtOfWords)))
             {
                 word.Value.Clear();
             }
             return tempText;
         }
 
-        public IList<Sentence> ReplaceWords(int lenghtWords, string substitute)
+        public List<Sentence> ReplaceWords(int lenghtWords, string substr)
         {
-            var wordSubstiture = new Word() { Value = SplitBySymbols(substitute) };
-            IList<Sentence> tempText = new List<Sentence>();
-            tempText = Value;
+            var wordSubstr = new Word() { Value = SplitSymbols(substr) };
+            List<Sentence> tempText = new List<Sentence>();
+            tempText = Value.ToList();
             foreach (var word in tempText
                 .SelectMany(sentence => sentence
                 .Value.Where(word => word.Value.Count() == lenghtWords)))
             {
-                word.Value = wordSubstiture.Value;
+                word.Value = wordSubstr.Value;
             }
             return tempText;
         }
-       // public IEnumerable<Word> GetWords(int lenghtOfWords)
-        //{            foreach (var word in Value.SelectMany(sentence => sentence.IfInterrogativeSentence).Where(word=>word.))
-                //.Where(word => word.Value.Count == lenghtOfWords)))
-            //{                yield return word;            }        }
-    }
+        
+       
+     }
 }

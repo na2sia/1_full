@@ -13,18 +13,21 @@ namespace CheckPoint2_1
         {
             // Reading text from the file
             var rawString = Reader.Read("text.txt");
+           
             //Parsing text
             Text newText = new Text();
             newText.Parse(rawString);
             Console.WriteLine(newText);
 
             Console.ReadLine();
+            
             //
-           foreach (var i in newText.GetWords())
+            foreach (var i in newText.GetWords(6))
             {
                 Console.WriteLine(i);
             }
-           Console.ReadLine();
+            Console.ReadLine();
+
             //Sorting sentences
             foreach (var i in newText.SortSentences())
             {
@@ -33,7 +36,6 @@ namespace CheckPoint2_1
             Console.ReadLine();
 
             //Deliting Words
-
             foreach (var i in newText.DeleteWords(4))
             {
                 Console.WriteLine(i);
@@ -41,7 +43,7 @@ namespace CheckPoint2_1
             Console.ReadLine();
 
             //Replacing words
-            foreach (var i in newText.ReplaceWords(3, "DANGER"))
+            foreach (var i in newText.ReplaceWords(7, "DANGER"))
             {
                 Console.WriteLine(i);
             }

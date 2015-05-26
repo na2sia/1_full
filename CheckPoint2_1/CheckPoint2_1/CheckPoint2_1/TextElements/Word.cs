@@ -11,23 +11,19 @@ namespace CheckPoint2_1.TextElements
 
         public Word() { }
 
-        public bool BeginsWithConsonant
+        public bool IsConsonant
         {
             get { return "qwrtpsdfghklzxcvbnm".Contains(Char.ToString(this.Value[0].Value).ToLower()); }
         }
 
-        public bool DoesEndSentence
+        public bool EndSentence
         {
-            get { return Value[Value.Count - 1].IsEndOfSentence(); }
+            get { return Value[0].IsEndSentence; }
         }
-        public bool InterrogativeSentence
-        {
-            get { return Value[Value.Count - 1].IsInterrogative();}
-        }
-
+        
         public override string ToString()
         {
-            return Value.Aggregate("", (current, element) => current + element.ToString());
+          return Value.Aggregate("", (current, element) => current + element.ToString());
         }
     }
 }

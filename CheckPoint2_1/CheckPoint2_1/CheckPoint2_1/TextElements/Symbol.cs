@@ -17,23 +17,19 @@ namespace CheckPoint2_1.TextElements
             Value = value;
         }
 
-        public bool IsPunctuationMark()
+        public bool IsPunctuationMark
         {
-            return (Value < 'a' || Value > 'z') && (Value < 'A' || Value > 'Z') && Value != '\'';
+            get { return ((Value < 'a' || Value > 'z') && (Value < 'A' || Value > 'Z') && Value != '\''); }
         }
 
-        public bool IsEndOfSentence()
+        public bool IsEndSentence
         {
-            return Value == '.' || Value == '!' || Value == '?';
+            get { return Value == '.' || Value == '!' || Value == '?'; }
         }
-        public bool IsInterrogative()
-        {
-            return Value == '?';
-        }
-
+        
         public override string ToString()
-        {
-            return this.Value.ToString(CultureInfo.InvariantCulture);
+        { 
+          return this.Value.ToString(CultureInfo.InvariantCulture); 
         }
     }
 }

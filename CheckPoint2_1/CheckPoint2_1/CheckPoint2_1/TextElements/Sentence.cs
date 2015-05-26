@@ -11,10 +11,10 @@ namespace CheckPoint2_1.TextElements
         public IList<Word> Value = new List<Word>();
 
         public Sentence(){}
-
+       
         public override string ToString()
         {
-            return Value.Aggregate("", (current, element) => current + element.ToString() + " ");
+          return Value.Aggregate("", (current, element) => current + element.ToString() + " ");
         }
     }
 }
