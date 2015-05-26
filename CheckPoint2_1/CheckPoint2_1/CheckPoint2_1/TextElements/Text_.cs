@@ -92,7 +92,7 @@ namespace CheckPoint2_1.TextElements
         {
             List<Word> tempWord = new List<Word>();
             foreach (var sentence in Value.Select(sentence => sentence.Value))
-            {
+            {                
                 foreach (var word in sentence.Select(word => word.Value))
                 {
                     foreach (var symbol in word.Select(symbol => symbol.Value))

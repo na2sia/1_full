@@ -20,8 +20,8 @@ namespace CheckPoint2_1
             Console.WriteLine(newText);
 
             Console.ReadLine();
-            
-            //
+
+            //Printing words from a question
             foreach (var i in newText.GetWords(6))
             {
                 Console.WriteLine(i);
