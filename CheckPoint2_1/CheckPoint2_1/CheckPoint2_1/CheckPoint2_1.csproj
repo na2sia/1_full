@@ -46,8 +46,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
+    <Compile Include="TextElements\IPunctuation.cs" />
+    <Compile Include="TextElements\ISentenceItem.cs" />
+    <Compile Include="TextElements\IWord.cs" />
+    <Compile Include="TextElements\Punctuation.cs" />
     <Compile Include="TextElements\Sentence.cs" />
     <Compile Include="TextElements\Symbol.cs" />
+    <Compile Include="TextElements\Text.cs" />
     <Compile Include="TextElements\Word.cs" />
     <Compile Include="TextElements\Text_.cs" />
   </ItemGroup>

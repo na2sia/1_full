@@ -88,25 +88,31 @@ namespace CheckPoint2_1.TextElements
             return query.ToList();
         }
 
+        #region GetWords
         public List<Word> GetWords(int lenghtWords)
         {
             List<Word> tempWord = new List<Word>();
-            foreach (var sentence in Value.Select(sentence => sentence.Value))
-            {                
-                foreach (var word in sentence.Select(word => word.Value))
-                {
-                    foreach (var symbol in word.Select(symbol => symbol.Value))
-                    {
-                        if (symbol == '?')
-                        {
-                            tempWord = (sentence.Select(sent => sent).Where(sent => sent.Value.Count() == lenghtWords)).ToList();
-                        }
-                    }
+            //foreach (var word in Value.Where(sentence => sentence.IsQuestionSentence))
+                //.Value.Where(word => word.Value==new Symbol ('?'))))
+                //Value == new Symbol('?'))))
+           // {
+             //   tempWord.
+                    //Add(word);
+            //}
 
+            foreach (var word in Value.Select(sentence => sentence.Value))
+            {                
+                foreach (var symbol in word.Select(words => words.IsQuestion))
+                {
+                     tempWord = word
+                                //.GroupBy(words=>words)
+                                .Where(words =>words.Value.Count()==lenghtWords)
+                                .Select(group=>group).ToList();
                 }
             }
             return tempWord;
         }
+#endregion
         
         public List<Sentence> DeleteWords(int lenghtOfWords)
         {
